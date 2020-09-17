@@ -1,8 +1,5 @@
 ﻿using NUnit.Framework;
-using ValidaCNPJCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ValidaCNPJCore.Tests
 {
