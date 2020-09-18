@@ -12,4 +12,4 @@ build:
   project: src\ValidaCNPJCore.sln
 
 after_build:
-  - cmd: appveyor PushArtifact src\ValidaCNPJCore\bin\Debug\ValidaCNPJCore.*.nupkg
+  - cmd: appveyor PushArtifact 'src\ValidaCNPJCore\bin\Debug\ValidaCNPJCore.*.nupkg'
