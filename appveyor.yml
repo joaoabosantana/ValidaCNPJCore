@@ -1,20 +1,17 @@
+configuration: Release
+platform: Any CPU
 install:
-  - choco install gitversion.portable -pre -y
-
+  - ps: choco install gitversion.portable -pre -y
 assembly_info:
   patch: false
-
 before_build:
-  - nuget restore src\ValidaCNPJCore.sln
-  - ps: gitversion /l console /output buildserver /updateAssemblyInfo
+- ps: >-
+    nuget restore src\ValidaCNPJCore.sln
 
+    gitversion /l console /output buildserver /updateAssemblyInfo
 build:
   project: src\ValidaCNPJCore.sln
-
-test_script:
- - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"YourTestDll -noshadow" -output:"coverage.xml" -filter:"+[YourSUTNamepace*]* -[YourTestNamespace*]*"
-after_test:
-  - ps: |
-      $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
-      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
-      bash codecov.sh -f "coverage.xml" -t YourUploadToken
+  publish_nuget: true
+  verbosity: minimal
+artifacts:
+  - path: src\ValidaCNPJCore\bin\Release\*.nupkg
