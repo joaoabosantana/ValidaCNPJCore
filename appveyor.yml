@@ -1,7 +1,10 @@
 configuration: Release
 platform: Any CPU
 install:
-  - ps: choco install gitversion.portable -pre -y
+- ps: >-
+    choco install gitversion.portable -pre -y
+
+    choco install codecov -y
 assembly_info:
   patch: false
 before_build:
@@ -12,5 +15,10 @@ before_build:
 build:
   project: src\ValidaCNPJCore.sln
   verbosity: minimal
+test_script:
+- ps: >-
+    dotnet test .\src\ValidaCNPJCore.sln --logger:"trx"
+
+    codecov.exe -f  src\ValidaCNPJCoreTests\TestResults\*.trx
 artifacts:
   - path: src\ValidaCNPJCore\bin\Release\*.nupkg
