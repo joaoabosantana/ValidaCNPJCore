@@ -1,15 +1,24 @@
-﻿install:
-  - choco install gitversion.portable -pre -y
+configuration: Release
+platform: Any CPU
+install:
+- ps: >-
+    choco install gitversion.portable -pre -y
 
+    choco install codecov -y
 assembly_info:
   patch: false
-
 before_build:
-  - nuget restore src\ValidaCNPJCore.sln
-  - ps: gitversion /l console /output buildserver /updateAssemblyInfo
+- ps: >-
+    nuget restore src\ValidaCNPJCore.sln
 
+    gitversion /l console /output buildserver /updateAssemblyInfo
 build:
   project: src\ValidaCNPJCore.sln
+  verbosity: minimal
+test_script:
+- ps: >-
+    dotnet test .\src\ValidaCNPJCore.sln --logger:"trx"
 
-after_build:
-  - cmd: appveyor PushArtifact "src\ValidaCNPJCore\bin\Debug\ValidaCNPJCore.*.nupkg"
+    codecov.exe -f  src\ValidaCNPJCoreTests\TestResults\*.trx
+artifacts:
+  - path: src\ValidaCNPJCore\bin\Release\*.nupkg
