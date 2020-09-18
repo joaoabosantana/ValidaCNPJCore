@@ -12,6 +12,4 @@ build:
   project: src\ValidaCNPJCore.sln
 
 after_build:
-  - cmd: ECHO nuget pack <Project>\<NuSpec>.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
-  - cmd: nuget pack <Project>\<NuSpec>.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
-  - cmd: appveyor PushArtifact "<NuSpec>.%GitVersion_NuGetVersion%.nupkg"
+  - cmd: appveyor PushArtifact "src\ValidaCNPJCore\bin\Debug\ValidaCNPJCore.*.nupkg"
