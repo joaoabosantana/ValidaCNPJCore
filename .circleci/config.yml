@@ -11,8 +11,6 @@
     
      steps:
        - checkout
-       - restore_cache:
-           keys:
        - run:
            name: "Instalar dependências de projeto"
            command: dotnet restore src\ValidaCNPJCore.sln
