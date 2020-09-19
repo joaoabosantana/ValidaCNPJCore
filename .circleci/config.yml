@@ -1,0 +1,21 @@
+ version: 2.1
+
+ orbs:
+  win: circleci/windows@2.2.0
+
+ jobs:
+   build:
+     executor:
+       name: win/default
+       shell: powershell.exe
+    
+     steps:
+       - checkout
+       - run:
+           name: "Instalar dependências de projeto"
+           command: dotnet restore src\ValidaCNPJCore.sln
+       - run:
+           name: "Compilar solução"
+           command: dotnet build -c Release -r win10-x64 src\ValidaCNPJCore.sln
+       - store_artifacts:
+           path: .\bin\Release\*.nupkg
