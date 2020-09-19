@@ -14,9 +14,6 @@
        - run:
            name: "Instalar dependências de projeto"
            command: dotnet restore src\ValidaCNPJCore.sln
-       - save_cache:
-           paths:
-             - C:\Users\circleci\.nuget\packages
        - run:
            name: "Compilar solução"
            command: dotnet build -c Release -r win10-x64 src\ValidaCNPJCore.sln
