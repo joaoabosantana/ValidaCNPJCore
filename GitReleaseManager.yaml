@@ -1,0 +1,25 @@
+create:
+  include-footer: true
+  footer-heading: Onde obtê-lo
+  footer-content: Procure o pacote ValidaCNPJCore no Gerenciador de Pacotes do NuGet
+  footer-includes-milestone: true
+  milestone-replace-text: "{milestone}"
+export:
+  include-created-date-in-title: true
+  created-date-string-format: dd/MMMM/yyyy
+issue-labels-include:
+  - bug
+  - epic
+  - enhancement
+issue-labels-exclude:
+  - configuração
+issue-labels-alias:
+    - name:   bug
+      header: Erro
+      plural: Erros
+    - name:   epic
+      header: Épico
+      plural: Épicos
+    - name:   enhancement
+      header: Funcionalidade
+      plural: Funcionalidades
