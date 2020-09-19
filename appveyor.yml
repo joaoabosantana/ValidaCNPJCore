@@ -1,0 +1,24 @@
+configuration: Release
+platform: Any CPU
+install:
+- ps: >-
+    choco install gitversion.portable -pre -y
+
+    choco install codecov -y
+assembly_info:
+  patch: false
+before_build:
+- ps: >-
+    nuget restore src\ValidaCNPJCore.sln
+
+    gitversion /l console /output buildserver /updateAssemblyInfo
+build:
+  project: src\ValidaCNPJCore.sln
+  verbosity: minimal
+test_script:
+- ps: >-
+    dotnet test .\src\ValidaCNPJCore.sln --logger:"trx;LogFileName=TestResults.xml"
+
+    codecov.exe -f  .\src\ValidaCNPJCoreTests\TestResults\TestResults.xml
+artifacts:
+  - path: src\ValidaCNPJCore\bin\Release\*.nupkg
