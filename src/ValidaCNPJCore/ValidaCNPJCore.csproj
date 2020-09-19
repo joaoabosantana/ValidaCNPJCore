@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>João Antonio Santana</Authors>
+    <Company>João Antonio Santana</Company>
+    <Description>Biblioteca para validação de número de inscrição no Cadastro Nacional da Pessoa Jurídica</Description>
+    <Copyright>Copyright (c) 2020 João Antonio Santana</Copyright>
+    <PackageTags>validador, cnpj</PackageTags>
+    <PackageProjectUrl>https://github.com/jotaantoniosantana/ValidaCNPJCore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jotaantoniosantana/ValidaCNPJCore</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
