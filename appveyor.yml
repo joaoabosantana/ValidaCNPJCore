@@ -17,8 +17,8 @@ build:
   verbosity: minimal
 test_script:
 - ps: >-
-    dotnet test .\src\ValidaCNPJCore.sln --logger:"trx"
+    dotnet test .\src\ValidaCNPJCore.sln --logger:"trx;LogFileName=TestResults.xml"
 
-    codecov.exe -f  src\ValidaCNPJCoreTests\TestResults\*.trx
+    codecov.exe -f  .\src\ValidaCNPJCoreTests\TestResults\TestResults.xml
 artifacts:
   - path: src\ValidaCNPJCore\bin\Release\*.nupkg
