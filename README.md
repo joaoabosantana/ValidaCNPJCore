@@ -2,6 +2,8 @@
 
 > Biblioteca para validação de número de inscrição no Cadastro Nacional da Pessoa Jurídica
 
+![Nuget](https://img.shields.io/nuget/v/ValidaCNPJCore) ![Nuget](https://img.shields.io/nuget/dt/ValidaCNPJCore)
+
 ## Introdução
 
 A validação de um CNPJ é feito por meio de um algoritmo que multiplica a primeira parte do CNPJ (o número de inscrição propriamente dito) por duas sequências de constantes e compara seus resoltados com o dígito verificador (a parte final).
